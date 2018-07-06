@@ -1,0 +1,508 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ap_fake_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="20dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp">
+            <TextView
+                android:id="@+id/desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/title"
+                android:layout_centerHorizontal="true"
+                android:text="根据设置的参数使用前置设备模拟无线热点，使目标用户自动连入到前置设备模拟的无线热点上，嗅探并保存用户的上网数据。"
+                android:textColor="@android:color/white" />
+
+            <RelativeLayout
+                android:id="@+id/fakelayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/desc"
+                android:layout_marginTop="20dp"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/faketext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="模拟方式:"
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp" />
+
+                <Spinner
+                    android:id="@+id/fakespinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_toRightOf="@id/faketext"
+                    android:popupBackground="@android:color/black"
+                    android:scrollbars="vertical"
+                    android:textColor="@android:color/white" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/inputlayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/fakelayout"
+                android:visibility="gone">
+
+                <RelativeLayout
+                    android:id="@+id/apchooseLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/apchooseButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="20dp"
+                        android:gravity="center"
+                        android:text="选择连接热点"
+                        android:textColor="@android:color/white"
+                        android:textSize="28sp"
+                        android:singleLine="true"/>
+
+                    <RelativeLayout
+                        android:id="@+id/wifiapsslayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/apchooseButton">
+
+                        <TextView
+                            android:id="@+id/wifipasstext"
+                            android:layout_width="120dp"
+                            android:layout_height="60dp"
+                            android:gravity="right|bottom"
+                            android:text="Wifi密码"
+                            android:textColor="@android:color/white"
+                            android:textSize="25sp" />
+
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@id/wifipasstext">
+
+                            <EditText
+                                android:id="@+id/wifipassedit"
+                                android:layout_width="200dp"
+                                android:layout_height="60dp"
+                                android:layout_marginLeft="5dp"
+                                android:background="@null"
+                                android:gravity="bottom"
+                                android:singleLine="true"
+                                android:textColor="#fff"
+                                android:textSize="25sp" />
+
+                            <TextView
+                                android:layout_width="205dp"
+                                android:layout_height="2dp"
+                                android:layout_below="@id/wifipassedit"
+                                android:layout_centerHorizontal="true"
+                                android:background="@android:color/white"
+                                android:text="" />
+                        </RelativeLayout>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/openchoose"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_marginTop="20dp"
+                    android:gravity="center_horizontal"
+                    android:layout_below="@id/apchooseLayout">
+
+                    <ImageButton
+                        android:id="@+id/openbtn"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/notselect"
+                        android:gravity="bottom"/>
+
+                    <TextView
+                        android:id="@+id/opentext"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@id/openbtn"
+                        android:text="模拟开放网络"
+                        android:textColor="@android:color/white"
+                        android:textSize="28sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/openoptionlayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/openchoose"
+                    android:visibility="gone">
+
+                    <RelativeLayout
+                        android:id="@+id/openssidlayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/openssidtext"
+                            android:layout_width="120dp"
+                            android:layout_height="60dp"
+                            android:gravity="right|bottom"
+                            android:text="SSID"
+                            android:textColor="@android:color/white"
+                            android:textSize="25sp" />
+
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@id/openssidtext">
+
+                            <EditText
+                                android:id="@+id/openssidedit"
+                                android:layout_width="200dp"
+                                android:layout_height="60dp"
+                                android:layout_marginLeft="5dp"
+                                android:background="@null"
+                                android:gravity="bottom"
+                                android:singleLine="true"
+                                android:textColor="#fff"
+                                android:textSize="25sp" />
+
+                            <TextView
+                                android:layout_width="205dp"
+                                android:layout_height="2dp"
+                                android:layout_below="@id/openssidedit"
+                                android:layout_centerHorizontal="true"
+                                android:background="@android:color/white"
+                                android:text="" />
+                        </RelativeLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/openchannellayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/openssidlayout">
+
+                        <TextView
+                            android:id="@+id/openchanneltext"
+                            android:layout_width="120dp"
+                            android:layout_height="50dp"
+                            android:gravity="right|bottom"
+                            android:text="选择频道"
+                            android:textColor="@android:color/white"
+                            android:textSize="25sp" />
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@id/openchanneltext">
+
+                            <TextView
+                                android:id="@+id/openchanneledit"
+                                android:layout_width="200dp"
+                                android:layout_height="50dp"
+                                android:layout_marginLeft="5dp"
+                                android:background="@null"
+                                android:gravity="bottom"
+                                android:textColor="#fff"
+                                android:textSize="25sp" />
+
+                            <TextView
+                                android:layout_width="205dp"
+                                android:layout_height="2dp"
+                                android:layout_below="@id/openchanneledit"
+                                android:layout_centerHorizontal="true"
+                                android:background="@android:color/white"
+                                android:text="" />
+                        </RelativeLayout>
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/encrychoose"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/openoptionlayout"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center_horizontal">
+
+                    <ImageButton
+                        android:id="@+id/encrybtn"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/notselect"
+                        android:gravity="bottom"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@id/encrybtn"
+                        android:text="模拟加密网络"
+                        android:textColor="@android:color/white"
+                        android:textSize="28sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/encryoptionlayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/encrychoose"
+                    android:gravity="center_horizontal"
+                    android:visibility="gone">
+
+                    <RelativeLayout
+                        android:id="@+id/ssidlayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/ssidtext"
+                            android:layout_width="120dp"
+                            android:layout_height="60dp"
+                            android:gravity="right|bottom"
+                            android:text="SSID"
+                            android:textColor="@android:color/white"
+                            android:textSize="25sp" />
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@id/ssidtext">
+
+                            <TextView
+                                android:id="@+id/ssidedit"
+                                android:layout_width="200dp"
+                                android:layout_height="60dp"
+                                android:layout_marginLeft="5dp"
+                                android:background="@null"
+                                android:gravity="bottom"
+                                android:singleLine="true"
+                                android:textColor="#fff"
+                                android:textSize="25sp" />
+
+                            <TextView
+                                android:layout_width="205dp"
+                                android:layout_height="2dp"
+                                android:layout_below="@id/ssidedit"
+                                android:layout_centerHorizontal="true"
+                                android:background="@android:color/white"
+                                android:text="" />
+                        </RelativeLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/encrylayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/ssidlayout">
+
+                        <TextView
+                            android:id="@+id/encrytext"
+                            android:layout_width="120dp"
+                            android:layout_height="50dp"
+                            android:gravity="right|bottom"
+                            android:text="加密方式"
+                            android:textColor="@android:color/white"
+                            android:textSize="25sp" />
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@id/encrytext">
+
+                            <TextView
+                                android:id="@+id/encryedit"
+                                android:layout_width="200dp"
+                                android:layout_height="50dp"
+                                android:layout_marginLeft="5dp"
+                                android:background="@null"
+                                android:gravity="bottom"
+                                android:textColor="#fff"
+                                android:textSize="25sp" />
+
+                            <TextView
+                                android:layout_width="205dp"
+                                android:layout_height="2dp"
+                                android:layout_below="@id/encryedit"
+                                android:layout_centerHorizontal="true"
+                                android:background="@android:color/white"
+                                android:text="" />
+                        </RelativeLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/passlayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/encrylayout">
+
+                        <TextView
+                            android:id="@+id/passtext"
+                            android:layout_width="120dp"
+                            android:layout_height="50dp"
+                            android:gravity="right|bottom"
+                            android:text="密码"
+                            android:textColor="@android:color/white"
+                            android:textSize="25sp" />
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@id/passtext">
+
+                            <TextView
+                                android:id="@+id/passedit"
+                                android:layout_width="200dp"
+                                android:layout_height="50dp"
+                                android:layout_marginLeft="5dp"
+                                android:background="@null"
+                                android:gravity="bottom"
+                                android:singleLine="true"
+                                android:textColor="#fff"
+                                android:textSize="25sp" />
+
+                            <TextView
+                                android:layout_width="205dp"
+                                android:layout_height="2dp"
+                                android:layout_below="@id/passedit"
+                                android:layout_centerHorizontal="true"
+                                android:background="@android:color/white"
+                                android:text="" />
+                        </RelativeLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/channellayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/passlayout">
+
+                        <TextView
+                            android:id="@+id/channeltext"
+                            android:layout_width="120dp"
+                            android:layout_height="50dp"
+                            android:gravity="right|bottom"
+                            android:text="选择频道"
+                            android:textColor="@android:color/white"
+                            android:textSize="25sp" />
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@id/channeltext">
+
+                            <TextView
+                                android:id="@+id/channeledit"
+                                android:layout_width="200dp"
+                                android:layout_height="50dp"
+                                android:layout_marginLeft="5dp"
+                                android:background="@null"
+                                android:gravity="bottom"
+                                android:textColor="#fff"
+                                android:textSize="25sp" />
+
+                            <TextView
+                                android:layout_width="205dp"
+                                android:layout_height="2dp"
+                                android:layout_below="@id/channeledit"
+                                android:layout_centerHorizontal="true"
+                                android:background="@android:color/white"
+                                android:text="" />
+                        </RelativeLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/encrymethodlayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/channellayout">
+
+                        <TextView
+                            android:id="@+id/encrymethodtext"
+                            android:layout_width="120dp"
+                            android:layout_height="50dp"
+                            android:gravity="right|bottom"
+                            android:text="加密算法"
+                            android:textColor="@android:color/white"
+                            android:textSize="25sp" />
+
+                        <RelativeLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@id/encrymethodtext">
+
+                            <TextView
+                                android:id="@+id/encrymethodedit"
+                                android:layout_width="200dp"
+                                android:layout_height="50dp"
+                                android:layout_marginLeft="5dp"
+                                android:background="@null"
+                                android:gravity="bottom"
+                                android:textColor="#fff"
+                                android:textSize="25sp" />
+
+                            <TextView
+                                android:layout_width="205dp"
+                                android:layout_height="2dp"
+                                android:layout_below="@id/encrymethodedit"
+                                android:layout_centerHorizontal="true"
+                                android:background="@android:color/white"
+                                android:text="" />
+                        </RelativeLayout>
+                    </RelativeLayout>
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/btnlayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/inputlayout"
+                android:layout_marginTop="50dp"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/startButton"
+                    style="@style/ButtonStyle"
+                    android:text="开始" />
+
+            </RelativeLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+    <RelativeLayout
+        android:id="@+id/left_container"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start">
+
+        <ListView
+            android:id="@+id/left_drawer"
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:cacheColorHint="@android:color/transparent"
+            android:choiceMode="singleChoice"
+            android:divider="#687595"
+            android:dividerHeight="2dp" />
+    </RelativeLayout>
+</LinearLayout>

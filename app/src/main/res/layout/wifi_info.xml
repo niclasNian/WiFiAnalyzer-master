@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+
+    <RelativeLayout
+        android:id="@+id/infolayout"
+        android:layout_width="match_parent"
+        android:layout_height="279dp"
+        android:paddingBottom="20dp"
+        android:paddingLeft="20dp"
+        android:paddingTop="20dp">
+
+        <RelativeLayout
+            android:id="@+id/firstlayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="55dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/channellayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="10">
+
+                    <ImageView
+                        android:id="@+id/channelicon"
+                        android:layout_width="22dp"
+                        android:layout_height="18dp"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/channel" />
+
+                    <TextView
+                        android:id="@+id/channeltext"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_toRightOf="@id/channelicon"
+                        android:text="信道:"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/channel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_toRightOf="@id/channeltext"
+                        android:singleLine="true"
+                        android:textColor="@color/channel_number"
+                        android:textSize="18sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/clientlayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6">
+
+                    <ImageView
+                        android:id="@+id/clienticon"
+                        android:layout_width="18dp"
+                        android:layout_height="22dp"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/client" />
+
+                    <TextView
+                        android:id="@+id/clienttext"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_toRightOf="@id/clienticon"
+                        android:text="客户端:"
+                        android:textColor="@android:color/white"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/client"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/clienttext"
+                        android:singleLine="true"
+                        android:textColor="@color/channel_number"
+                        android:textSize="18sp" />
+                </RelativeLayout>
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/secondlayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/firstlayout"
+            android:layout_marginTop="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/signallayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="10">
+
+                    <ImageView
+                        android:id="@+id/signalicon"
+                        android:layout_width="26dp"
+                        android:layout_height="18dp"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/signal" />
+
+                    <TextView
+                        android:id="@+id/signaltext"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_toRightOf="@id/signalicon"
+                        android:text="信号:"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/signal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/signaltext"
+                        android:singleLine="true"
+                        android:textColor="@color/channel_number"
+                        android:textSize="18sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/encrylayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6">
+
+                    <ImageView
+                        android:id="@+id/encryicon"
+                        android:layout_width="18dp"
+                        android:layout_height="22dp"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/encry" />
+
+                    <TextView
+                        android:id="@+id/encrytext"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_toRightOf="@id/encryicon"
+                        android:text="加密:"
+                        android:textColor="@android:color/white"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/encry"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/encrytext"
+                        android:singleLine="true"
+                        android:textColor="@color/channel_number"
+                        android:textSize="14sp" />
+                </RelativeLayout>
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/thirdlayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/secondlayout"
+            android:layout_marginTop="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/wpslayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="10">
+
+                    <ImageView
+                        android:id="@+id/wpsicon"
+                        android:layout_width="22dp"
+                        android:layout_height="18dp"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/wps" />
+
+                    <TextView
+                        android:id="@+id/wpstext"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:layout_toRightOf="@id/wpsicon"
+                        android:text="WPS:"
+                        android:textColor="@android:color/white"
+                        android:textSize="18sp" />
+
+                    <TextView
+                        android:id="@+id/wps"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/wpstext"
+                        android:singleLine="true"
+                        android:textColor="@color/channel_number"
+                        android:textSize="18sp" />
+                </RelativeLayout>
+
+
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/methodlayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="150dp">
+
+            <ImageView
+                android:id="@+id/methodicon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:background="@drawable/method" />
+
+            <TextView
+                android:id="@+id/methodtext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@id/methodicon"
+                android:text="算法:"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/method"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/methodtext"
+                android:singleLine="true"
+                android:textColor="@color/channel_number"
+                android:textSize="18sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/maclayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/thirdlayout"
+            android:layout_marginTop="35dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/mactext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MAC地址:"
+                android:textColor="@android:color/white"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/mac"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/mactext"
+                android:singleLine="true"
+                android:textColor="@color/channel_number"
+                android:textSize="20sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/companylayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/maclayout"
+            android:layout_marginTop="3dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/companytext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="厂商:"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/company"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/companytext"
+                android:singleLine="true"
+                android:textColor="@color/channel_number"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

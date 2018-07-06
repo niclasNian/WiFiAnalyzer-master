@@ -1,0 +1,142 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center">
+        <TextView
+            android:id="@+id/desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title"
+            android:text="使用前置设备自动嗅探无线网络的通信握手包，包括WEP/WPA/WPA2协议认证数据包。"
+            android:textColor="@android:color/white"/>
+        </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:gravity="center">
+        <Button
+            android:id="@+id/apchoose"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_below="@id/desc"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:text="选择目标热点"
+            android:textColor="@android:color/white"
+            android:textSize="28sp"
+            android:textAllCaps="false"/>
+        </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:gravity="center">
+        
+   <RelativeLayout 
+       android:id="@+id/sendlayout"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_below="@id/apchoose"
+       android:gravity="center"
+       >       
+       <TextView 
+           android:id="@+id/sendtext"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="保存方式:"
+           android:textSize="20sp"
+           android:textColor="@android:color/white"
+           android:layout_centerVertical="true"
+           />
+       <Spinner 
+           android:id="@+id/sendspinner"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:scrollbars="vertical"
+           android:layout_toRightOf="@id/sendtext"
+           android:textColor="@android:color/white"
+           android:popupBackground="@android:color/black"
+           />
+   </RelativeLayout>
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:gravity="center">
+   <RelativeLayout 
+       android:id="@+id/methodlayout"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_below="@id/sendlayout"
+       android:gravity="center"
+       >
+     
+       <TextView 
+           android:id="@+id/methodtext"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="抓取方式:"
+           android:textSize="20sp"
+           android:textColor="@android:color/white"
+           android:layout_centerVertical="true"
+           />
+       <Spinner 
+           android:id="@+id/methodspinner"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:scrollbars="vertical"
+           android:layout_toRightOf="@id/methodtext"
+           android:textColor="@android:color/white"
+            android:popupBackground="@android:color/black"
+           />
+   </RelativeLayout>
+   </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:gravity="center">
+
+    <RelativeLayout
+        android:id="@+id/btnlayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/methodlayout"
+        android:gravity="center" >
+
+        <Button
+            android:id="@+id/startButton"
+            android:text="开始"
+            android:gravity="center"
+            style="@style/ButtonStyle" />
+    </RelativeLayout>
+</LinearLayout>
+</LinearLayout>
+    <RelativeLayout
+        android:id="@+id/left_container"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start">
+
+        <ListView
+            android:id="@+id/left_drawer"
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:cacheColorHint="@android:color/transparent"
+            android:choiceMode="singleChoice"
+            android:divider="#687595"
+            android:dividerHeight="2dp" />
+    </RelativeLayout>
+
+</LinearLayout>
