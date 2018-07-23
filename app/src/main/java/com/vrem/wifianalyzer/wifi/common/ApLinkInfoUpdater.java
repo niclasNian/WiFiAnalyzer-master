@@ -9,7 +9,6 @@ import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.RequestFuture;
-import com.vrem.wifianalyzer.MainContext;
 import com.vrem.wifianalyzer.wifi.fragmentWiFiHotspot.WIFIHotspotFragment;
 
 import org.json.JSONException;
@@ -18,29 +17,17 @@ import org.json.JSONObject;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
+
 /**
- * 获取前置信息：电量%、4G信号强度%
+ * Ap模式的连接，获取前置信息：电量%、4G信号强度%
  * */
-public class InfoUpdater extends AsyncTask<Object, Object, JSONObject> {
+public class ApLinkInfoUpdater extends AsyncTask<Object, Object, JSONObject> {
     private Context mContext;
     private boolean mIsFirst;
-    private boolean isAp = false;
-    private String hotspotName;
-    private String hotspotPsw;
 
-//    ProgressBar mProgressBar;
-
-    public InfoUpdater(Context context, boolean isFirst) {
+    public ApLinkInfoUpdater(Context context, boolean isFirst) {
         mContext = context;
         mIsFirst = isFirst;
-//        mProgressBar = progressBar;
-    }
-    public InfoUpdater(Context context, boolean isFirst,boolean isAp,String hotspotName,String hotspotPsw) {
-        mContext            = context;
-        mIsFirst            = isFirst;
-        this.isAp           = isAp;
-        this.hotspotName    = hotspotName;
-        this.hotspotPsw     = hotspotPsw;
     }
 
     @Override
@@ -64,8 +51,6 @@ public class InfoUpdater extends AsyncTask<Object, Object, JSONObject> {
             return;
         }
 
-//        mProgressBar.setVisibility(View.GONE);
-
         if (param == null) {
             Toast.makeText(mContext, "出错啦", Toast.LENGTH_SHORT).show();
             return;
@@ -85,41 +70,27 @@ public class InfoUpdater extends AsyncTask<Object, Object, JSONObject> {
             }
             else if (status == 1) {
                 String devID = "HEHE2017";
-//                Intent it = new Intent();
-//                it.setClass(mContext, DeviceListActivity.class);
-
                 PrefSingleton.getInstance().putString("device", devID);
-
-//                mContext.startActivity(it);
-//                ((Activity)mContext).overridePendingTransition(R.anim.slide_right_in,
-//                        R.anim.slide_left_out);
             }
             else {
                 Toast.makeText(mContext, "出错啦", Toast.LENGTH_SHORT).show();
                 return;
             }
-            status = param.getInt("status");
+//            status = param.getInt("status");
         } catch (JSONException e) {
             e.printStackTrace();
         }
     }
 
     public JSONObject info(final Context context) throws JSONException {
-        String url = PrefSingleton.getInstance().getString("url");
+        String url = PrefSingleton.getInstance().getString("ApUrl");
 
         JSONObject obj = new JSONObject();
         JSONObject param = new JSONObject();
         param.put("action", "info");
-        if (isAp){ //是否打开热点
-            JSONObject ap = new JSONObject();
-            ap.put("essid",hotspotName);
-            ap.put("pass",hotspotPsw);
-            param.put("ap",ap);
-        }
-        //param.put("timestamp", System.currentTimeMillis() / 1000.0);
         obj.put("param", param);
 
-        Log.w("INFO", "REQUEST: " + obj.toString());
+        Log.w("AP_INFO", "REQUEST: " + obj.toString());
 
         RequestFuture<JSONObject> requestFuture = RequestFuture.newFuture();
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, url,  obj, requestFuture, requestFuture);
@@ -136,16 +107,10 @@ public class InfoUpdater extends AsyncTask<Object, Object, JSONObject> {
 
             new InteractRecordDBUtils(mContext).easy_insert(obj.toString(), response.toString());//将请求命令、返回结果存入数据库
 
-            Log.w("INFO", "RESPONSE: " + response.toString());
-            if (isAp){ //将结果到接口当中，供WIFIHotspotFragment类使用
-//                infoResponse.getInfoJson(response);
-                WIFIHotspotFragment wifiHotspotFragment = new WIFIHotspotFragment();
-//                wifiHotspotFragment.createWifiHotspot(hotspotName,hotspotPsw);
-                wifiHotspotFragment.createWifiHotspot8(MainContext.INSTANCE.getContext(),true);
-            }
+            Log.w("AP_INFO", "RESPONSE: " + response.toString());
             return response;
         } catch (TimeoutException e) {
-            Log.w("INFO_STEP_2", "TIMEOUT");
+            Log.w("AP_INFO_STEP_2", "TIMEOUT");
             return null;
         } catch (InterruptedException e) {
             e.printStackTrace();

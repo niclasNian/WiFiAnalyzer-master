@@ -24,6 +24,7 @@ import android.net.wifi.WifiManager;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
 
 import com.vrem.wifianalyzer.settings.Repository;
 import com.vrem.wifianalyzer.settings.Settings;
@@ -91,6 +92,10 @@ public enum MainContext {
 
     public LayoutInflater getLayoutInflater() {
         return mainActivity.getLayoutInflater();
+    }
+
+    public MenuInflater getOptionMenu(){
+        return mainActivity.getMenuInflater();
     }
 
     //获取配置

@@ -212,11 +212,12 @@ public class DevStatusDBUtils {
         String handling = "";
         Cursor cursor = mDb.rawQuery(sql,null);
         while (cursor.moveToNext()) {
-            if (cursor.getString(0).equals("")){
-                handling = "wps_crack";
-            }else {
-                handling = cursor.getString(0);
-            }
+//            if (cursor.getString(0).equals("")){
+//                handling = "wps_crack";
+//            }else {
+//                handling = cursor.getString(0);
+//            }
+            handling = cursor.getString(0);
             break;
         }
 

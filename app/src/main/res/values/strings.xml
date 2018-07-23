@@ -42,6 +42,7 @@
     <string name="action_addWIFI" translatable="false">AddWifi</string>
     <string name="action_resume" translatable="false">Resume</string>
     <string name="action_filter" translatable="false">Filter</string>
+    <string name="action_device" translatable="false">Device</string>
     <!-- action end -->
 
     <string name="scanner_message" translatable="false">Scanning...</string>

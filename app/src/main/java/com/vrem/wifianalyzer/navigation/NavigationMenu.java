@@ -44,6 +44,7 @@ public enum NavigationMenu {
     VENDOR_LIST(R.drawable.ic_list_grey_500_48dp, R.string.action_vendors, NavigationItemFactory.VENDOR_LIST),
     FORGERY(R.drawable.ic_location_on_forgery_500_48dp,R.string.action_forgery,NavigationItemFactory.FORGERY),
     SNIFFER(R.drawable.ic_location_on_sniffer_500_48dp,R.string.action_sniffer,NavigationItemFactory.SNIFFER),
+    WIFI_HOTSPOT(R.drawable.wifi_hotspot,R.string.action_wifi_hotspot,NavigationItemFactory.WIFI_HOTSPOT),
     SETTINGS(R.drawable.ic_settings_grey_500_48dp, R.string.action_settings, NavigationItemFactory.SETTINGS),
     ABOUT(R.drawable.ic_info_outline_grey_500_48dp, R.string.action_about, NavigationItemFactory.ABOUT);
 

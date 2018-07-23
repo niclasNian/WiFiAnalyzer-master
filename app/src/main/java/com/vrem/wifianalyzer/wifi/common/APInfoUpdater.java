@@ -120,7 +120,7 @@ public class APInfoUpdater extends AsyncTask<Object, Object, List<WiFiDetail>>{
             }
             wiFiDetails = apData;
             if (wiFiDetails != null && asyncResponse !=null){
-                asyncResponse.onDataReceivedSuccess(wiFiDetails);
+                asyncResponse.onDataReceivedSuccess(wiFiDetails);//将扫描结果存入asyncResponse接口当中，供其它类使用数据
             }
             return wiFiDetails;
         } catch (JSONException e) {

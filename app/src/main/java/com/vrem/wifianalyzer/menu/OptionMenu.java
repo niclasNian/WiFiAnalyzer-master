@@ -21,10 +21,14 @@ package com.vrem.wifianalyzer.menu;
 import android.app.Activity;
 import android.support.annotation.NonNull;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.vrem.wifianalyzer.MainContext;
 import com.vrem.wifianalyzer.R;
+import com.vrem.wifianalyzer.wifi.common.InfoUpdater;
+import com.vrem.wifianalyzer.wifi.common.PrefSingleton;
+import com.vrem.wifianalyzer.wifi.deviceList.Deviece;
 import com.vrem.wifianalyzer.wifi.filter.Filter;
 
 public class OptionMenu {
@@ -48,6 +52,18 @@ public class OptionMenu {
             case R.id.action_filter:
                 Filter.build().show();//打开过滤器
                 break;
+            case R.id.action_device:
+
+                new InfoUpdater(MainContext.INSTANCE.getContext(),true).execute();//获取前置信息
+                String deviceInfo = PrefSingleton.getInstance().getString("deviceInfo");
+                if (deviceInfo.equals(null)){
+                    MenuInflater inflater = MainContext.INSTANCE.getOptionMenu();
+                    inflater.inflate(R.menu.optionmenu,menu);
+                    menu.findItem(R.id.action_device).setVisible(false);
+                }else {
+                    menu.findItem(R.id.action_device).setVisible(true);
+                    Deviece.build().show();//显示设备列表
+                }
             default:
                 // do nothing
                 break;

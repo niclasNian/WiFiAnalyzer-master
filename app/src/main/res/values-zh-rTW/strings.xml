@@ -118,6 +118,7 @@
 
     <string name="action_sniffer">握手包截获</string>
     <string name="action_forgery">热点伪造</string>
+    <string name="action_wifi_hotspot">无线热点</string>
     <string-array name="fake_spinner">
         <item>3G模拟</item>
         <item>Wifi模拟</item>

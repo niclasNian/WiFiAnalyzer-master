@@ -27,7 +27,6 @@ import android.widget.Toast;
 
 import com.vrem.wifianalyzer.MainContext;
 import com.vrem.wifianalyzer.R;
-import com.vrem.wifianalyzer.SnifferActivity;
 import com.vrem.wifianalyzer.wifi.common.BackgroundTask;
 import com.vrem.wifianalyzer.wifi.common.CommonUpdater;
 import com.vrem.wifianalyzer.wifi.common.DevStatusDBUtils;

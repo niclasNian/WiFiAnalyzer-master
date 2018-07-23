@@ -6,6 +6,7 @@ import android.preference.PreferenceManager;
 
 import java.util.Map;
 
+//数据存储类
 public class PrefSingleton {
     private static PrefSingleton mInstance;
     private Context mContext;
@@ -44,6 +45,13 @@ public class PrefSingleton {
     public void putString(String key, String value) {
         SharedPreferences.Editor editor = mSharedPreferences.edit();
         editor.putString(key, value);
+        editor.commit();
+    }
+
+    //移除存储类的中数据
+    public void remove(String key){
+        SharedPreferences.Editor editor = mSharedPreferences.edit();
+        editor.remove(key);
         editor.commit();
     }
 }

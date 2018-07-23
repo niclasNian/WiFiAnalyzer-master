@@ -137,10 +137,8 @@ public class DeviceInfo extends Base {
 		((Activity) context).invalidateOptionsMenu();
 		mainContainer.setVisibility(View.GONE);
 
-		////////
-		Intent intent = ((Activity)context).getIntent();
+//		Intent intent = ((Activity)context).getIntent();
 		String devID = PrefSingleton.getInstance().getString("device");
-//		String devID = "e00999e0010f";
 		DevStatusDBUtils devStatusDBUtils = new DevStatusDBUtils(context);
 		devStatusDBUtils.open();
 		devStatusDBUtils.tryInsertNewDev(devID);

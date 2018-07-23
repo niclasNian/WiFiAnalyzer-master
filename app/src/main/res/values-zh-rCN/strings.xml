@@ -33,6 +33,7 @@
     <string name="action_sniffer">握手包截获</string>
     <string name="action_vendors">WPS破解</string>
     <string name="action_forgery">热点伪造</string>
+    <string name="action_wifi_hotspot">无线热点</string>
     <string name="action_settings">设置</string>
     <string name="action_about">关于</string>
     <!-- action end -->
