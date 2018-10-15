@@ -26,9 +26,9 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.NonNull;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.util.Pair;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -51,9 +51,14 @@ import com.vrem.wifianalyzer.settings.Settings;
 import com.vrem.wifianalyzer.wifi.accesspoint.ConnectionView;
 import com.vrem.wifianalyzer.wifi.band.WiFiBand;
 import com.vrem.wifianalyzer.wifi.band.WiFiChannel;
+import com.vrem.wifianalyzer.wifi.common.DataBaseUtil;
+import com.vrem.wifianalyzer.wifi.common.FrequencyTransformTools;
 import com.vrem.wifianalyzer.wifi.common.InfoUpdater;
 import com.vrem.wifianalyzer.wifi.common.PrefSingleton;
+import com.vrem.wifianalyzer.wifi.fragmentWiFiHotspot.WIFIHotspotFragment;
+import com.vrem.wifianalyzer.wifi.scanner.WifiDetailImpl;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
@@ -93,13 +98,21 @@ public class MainActivity extends AppCompatActivity implements OnSharedPreferenc
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
 
-//        new InfoUpdater(this,true);
+        /*#################################添加代码开始####################################*/
         PrefSingleton.getInstance().Initialize(getApplicationContext());//初始化参数
-        PrefSingleton.getInstance().putString("url", "http://192.168.100.1:9494");
-        if (PrefSingleton.getInstance().getInt("id") < 0) {
-            PrefSingleton.getInstance().putInt("id", 0);
+        boolean isWIFI = MainContext.INSTANCE.getScannerService().isWifiStatus();
+        if (isWIFI) {
+            PrefSingleton.getInstance().putString("url", "http://192.168.100.1:9494");
+            if (PrefSingleton.getInstance().getInt("id") < 0) {
+                PrefSingleton.getInstance().putInt("id", 0);
+            }
+            new InfoUpdater(this,true).execute();//获取前置信息
         }
-        new InfoUpdater(this,true).execute();//获取前置信息
+//        new WIFIHotspotFragment(mainHandler);//传递mainHandler 给WIFIHotspotFragment，用于更新UI
+        FrequencyTransformTools.getInstance().Initialize();//初始化对应信道的频率，用于测算wifi距离
+        DataBaseUtil dataBaseUtil = new DataBaseUtil(this);
+        dataBaseUtil.initMacDB();
+        /*#################################添加代码结束####################################*/
 
         settings.registerOnSharedPreferenceChangeListener(this);
 
@@ -160,16 +173,16 @@ public class MainActivity extends AppCompatActivity implements OnSharedPreferenc
         if (info != null && info.size()>0){
             ComponentName componentName = info.get(0).topActivity;
             String className = componentName.getClassName();
-            Log.d("className:" , className);
+            Log.d("className" , className);
             if ("com.vrem.wifianalyzer.SnifferActivity".equals(className)){//判断SnifferActivity是否处于打开状态
-                Log.w("SnifferActivity:","处于打开状态，不执行更新");
+                Log.w("SnifferActivity","处于打开状态，不执行更新");
             }else if ("com.vrem.wifianalyzer.FakeAPActivity".equals(className)){
-                Log.w("FakeAPActivity:","处于打开状态，不执行更新");
+                Log.w("FakeAPActivity","处于打开状态，不执行更新");
             }
         }else {
             MainContext.INSTANCE.getScannerService().update();
             updateActionBar();
-            Log.w("系统:","执行更新");
+            Log.w("系统","执行更新");
         }
     }
 
@@ -180,7 +193,7 @@ public class MainActivity extends AppCompatActivity implements OnSharedPreferenc
     }
 
     //重新加载页面
-    private void reloadActivity() {
+    public void reloadActivity() {
         finish();
         Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP |
@@ -200,7 +213,7 @@ public class MainActivity extends AppCompatActivity implements OnSharedPreferenc
         }
     }
 
-    //导航条动作选择
+    //处理navigationView item的点击事件
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         try {
@@ -221,6 +234,15 @@ public class MainActivity extends AppCompatActivity implements OnSharedPreferenc
             return true;
         }
         return false;
+    }
+
+    @Override
+    public void recreate() {
+        MainContext mainContext = MainContext.INSTANCE;
+        mainContext.initialize(this, isLargeScreen());//调用mainContext 初始化数据
+        ConnectionView connectionView = new ConnectionView(this);//获取连接视图对象
+        mainContext.getScannerService().register(connectionView);
+        Log.d("MainActivity status","recreate");
     }
 
     @Override
