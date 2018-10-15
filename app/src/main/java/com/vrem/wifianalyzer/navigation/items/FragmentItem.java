@@ -34,11 +34,11 @@ import com.vrem.wifianalyzer.navigation.NavigationMenuView;
 
 import java.io.Serializable;
 
-class FragmentItem implements NavigationItem {
+public class FragmentItem implements NavigationItem {
     private final Fragment fragment;
     private final boolean registered;
 
-    FragmentItem(@NonNull Fragment fragment, boolean registered) {
+    public FragmentItem(@NonNull Fragment fragment, boolean registered) {
         this.fragment = fragment;
         this.registered = registered;
     }
@@ -68,6 +68,9 @@ class FragmentItem implements NavigationItem {
     private void startFragment(@NonNull MainActivity mainActivity) {
         FragmentManager fragmentManager = mainActivity.getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//        if (fragment.equals("WIFIHotspotFragment")){
+//            fragmentTransaction.add(R.id.main_fragment, fragment).commit();
+//        }
         fragmentTransaction.replace(R.id.main_fragment, fragment).commit();
     }
 
