@@ -34,6 +34,7 @@
     <string name="action_vendors">WPS破解</string>
     <string name="action_forgery">热点伪造</string>
     <string name="action_wifi_hotspot">无线热点</string>
+    <string name="action_datapack">数据包</string>
     <string name="action_settings">设置</string>
     <string name="action_about">关于</string>
     <!-- action end -->
@@ -45,8 +46,6 @@
 
     <string name="button_cancel">取消</string>
     <string name="no_data">无数据</string>
-    <string name="no_data_msg">请访问我们网站上的常见问题“常见问题”部分。</string>
-    <string name="no_data_geo_warning">運行Android OS 6+（棉花糖）一些用戶報告說, 位置服務必須為應用程序看到WiFi網絡中啟用. 棉花糖用戶可根據需要打開定位服務, 即使無線網絡分析儀沒有明確要求它. 這似乎歸因於Android操作系統6+, 需要位置服務才能看到WiFi網絡的潛在問題.</string>
 
     <string name="export_not_available">出口不可用</string>
 
@@ -94,7 +93,7 @@
     <!-- security end -->
 
     <!-- filter start -->
-    <string name="filter_title">滤波器</string>
+    <string name="filter_title">过滤器</string>
     <string name="filter_close">关</string>
     <string name="filter_reset">重启</string>
     <string name="filter_apply">应用</string>

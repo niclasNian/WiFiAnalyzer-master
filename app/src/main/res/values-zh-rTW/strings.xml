@@ -37,8 +37,6 @@
 
     <string name="button_cancel">取消</string>
     <string name="no_data">無資料</string>
-    <string name="no_data_msg">請訪問我們網站上的常見問題“常見問題”部分。</string>
-    <string name="no_data_geo_warning">部分使用 Android 6+(棉花糖)系統的用戶回報， 即便WiFi分析儀沒有明確要求，棉花糖用戶可能需要開啟定位服務，才能在本應用程式內看到WiFi網路。這似乎歸因於Android 6+系統，需要位置服務才能看到WiFi網路的潛在問題。</string>
 
     <string name="export_not_available">無法匯出</string>
 
@@ -85,7 +83,7 @@
     <!-- security end -->
 
     <!-- filter start -->
-    <string name="filter_title">濾波器</string>
+    <string name="filter_title">过濾器</string>
     <string name="filter_close">關</string>
     <string name="filter_reset">重設</string>
     <string name="filter_apply">套用</string>
@@ -119,6 +117,7 @@
     <string name="action_sniffer">握手包截获</string>
     <string name="action_forgery">热点伪造</string>
     <string name="action_wifi_hotspot">无线热点</string>
+    <string name="action_datapack">数据包</string>
     <string-array name="fake_spinner">
         <item>3G模拟</item>
         <item>Wifi模拟</item>
