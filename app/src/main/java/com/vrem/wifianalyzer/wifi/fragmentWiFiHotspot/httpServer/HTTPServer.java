@@ -48,9 +48,11 @@ public class HTTPServer extends NanoHTTPD {
                 JSONObject jsonObject = new JSONObject(str);//封装为json数据
                 Log.d("Cilent",jsonObject.get("ip")+" :"+jsonObject.get("port"));
                 ip 			= jsonObject.get("ip").toString();
-                String port = jsonObject.get("port").toString();
-                PrefSingleton.getInstance().putString("ApUrl", "http://"+ip+":"+port+"");//将ip port存入存储类中，方便ApLinkInfoUpdater调用
-                new ApLinkInfoUpdater(MainContext.INSTANCE.getContext(),true).execute();//执行异步任务，发送数据给前置
+                final String port = jsonObject.get("port").toString();
+//                PrefSingleton.getInstance().putString("ip",ip);
+//                PrefSingleton.getInstance().putString("port",port);
+//                PrefSingleton.getInstance().putString("url", "http://"+ip+":"+port+"");//将ip port存入存储类中，方便ApLinkInfoUpdater调用
+//                new ApLinkInfoUpdater(MainContext.INSTANCE.getContext(),true).execute();//执行异步任务，发送数据给前置
                 //调用线程更新UI
                 new Thread(new Runnable() {
                     @Override
@@ -58,7 +60,7 @@ public class HTTPServer extends NanoHTTPD {
                         handler.post(new Runnable() {
                             @Override
                             public void run() {
-                                list.add("有设备接入，ip："+ip);
+                                list.add("有设备接入，ip:"+ip+":"+port+"");
                                 listAdapter.notifyDataSetChanged();
                             }
                         });
