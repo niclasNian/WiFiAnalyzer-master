@@ -20,6 +20,7 @@ package com.vrem.wifianalyzer.navigation;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -92,8 +93,16 @@ public class NavigationMenuView {
 
         @Override
         public void execute(NavigationMenu navigationMenu) {
-            MenuItem menuItem = menu.add(navigationGroup.ordinal(), navigationMenu.ordinal(), navigationMenu.ordinal(), navigationMenu.getTitle());
-            menuItem.setIcon(navigationMenu.getIcon());
+            int gOrdi = navigationGroup.ordinal();
+            int mOrdi = navigationMenu.ordinal();
+            int mTitle =navigationMenu.getTitle();
+            int mIcon = navigationMenu.getIcon();
+/*            Log.w("navigationGroup.ordinal",String.valueOf(gOrdi));
+            Log.w("navigationMenu.ordinal",String.valueOf(mOrdi));
+            Log.w("navigationMenu.getTitle",String.valueOf(mTitle));
+            Log.w("navigationMenu.getIcon",String.valueOf(mIcon));*/
+            MenuItem menuItem = menu.add(gOrdi, mOrdi, mOrdi, mTitle);
+            menuItem.setIcon(mIcon);
         }
     }
 }
