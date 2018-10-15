@@ -34,6 +34,9 @@ import com.vrem.wifianalyzer.wifi.filter.adapter.FilterAdapter;
 import com.vrem.wifianalyzer.wifi.scanner.ScannerService;
 import com.vrem.wifianalyzer.wifi.scanner.ScannerServiceFactory;
 
+/**
+ * 通过MainContext枚举，获取到全局的服务
+ * */
 public enum MainContext {
     INSTANCE;
 
@@ -77,7 +80,6 @@ public enum MainContext {
     public MainActivity getMainActivity() {
         return mainActivity;
     }
-
     void setMainActivity(MainActivity mainActivity) {
         this.mainActivity = mainActivity;
     }
@@ -116,7 +118,10 @@ public enum MainContext {
     }
 
 
-    void initialize(@NonNull MainActivity mainActivity, boolean largeScreen) {
+    /**
+     * 初始化全局数据、设置
+     * */
+    public void initialize(@NonNull MainActivity mainActivity, boolean largeScreen) {
         Context applicationContext = mainActivity.getApplicationContext();//获取Context对象
         WifiManager wifiManager = (WifiManager) applicationContext.getSystemService(Context.WIFI_SERVICE);//获取wifi服务
         Handler handler = new Handler();
