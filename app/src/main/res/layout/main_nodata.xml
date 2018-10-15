@@ -58,7 +58,7 @@
         android:textColor="@color/success_color"
         android:textStyle="bold"/>
 
-    <TextView
+<!--    <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:autoLink="web"
@@ -79,6 +79,6 @@
         android:layout_height="match_parent"
         android:autoLink="web"
         android:gravity="center"
-        android:text="@string/no_data_url"/>
+        android:text="@string/no_data_url"/>-->
 
 </LinearLayout>
