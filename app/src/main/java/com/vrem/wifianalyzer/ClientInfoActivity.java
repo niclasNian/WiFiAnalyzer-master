@@ -4,13 +4,13 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.vrem.wifianalyzer.wifi.common.DataBaseUtil;
 import com.vrem.wifianalyzer.wifi.model.ClientInfo;
 import com.vrem.wifianalyzer.wifi.model.WiFiDetail;
 
@@ -21,7 +21,7 @@ import org.json.JSONException;
  * Created by ZhenShiJie on 2018/3/21.
  */
 
-public class WifiInfoActivity extends Activity {
+public class ClientInfoActivity extends Activity {
 
     private WiFiDetail wiFiDetail;
 
@@ -55,7 +55,7 @@ public class WifiInfoActivity extends Activity {
         String wifiDetailJson = getIntent().getStringExtra("wifiDetail");
         wiFiDetail = new Gson().fromJson(wifiDetailJson,WiFiDetail.class);
         try {
-            ClientInfo.setClientInfo(WifiInfoActivity.this, wiFiDetail, listView,
+            ClientInfo.setClientInfo(ClientInfoActivity.this, wiFiDetail, listView,
                     nodata);
         } catch (JSONException e) {
             // TODO Auto-generated catch block
@@ -99,5 +99,10 @@ public class WifiInfoActivity extends Activity {
         String strMac = wiFiDetail.getBSSID();
         mac.setText(strMac);
 //        Log.v("获取到的数据：",wiFiDetail.getSSID());
+
+        DataBaseUtil dataBaseUtil = new DataBaseUtil();
+        String company_info =dataBaseUtil.queryCompany(this,wiFiDetail.getBSSID());
+        company.setText(company_info);
+
     }
 }
