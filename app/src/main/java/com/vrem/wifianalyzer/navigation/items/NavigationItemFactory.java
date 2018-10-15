@@ -24,6 +24,7 @@ import com.vrem.wifianalyzer.wifi.accesspoint.AccessPointsFragment;
 import com.vrem.wifianalyzer.wifi.channelgraph.ChannelGraphFragment;
 import com.vrem.wifianalyzer.wifi.channelrating.ChannelRatingFragment;
 import com.vrem.wifianalyzer.wifi.fragmentClientEnum.ClientEnumFragment;
+import com.vrem.wifianalyzer.wifi.fragmentDataPack.DataPackageFragment;
 import com.vrem.wifianalyzer.wifi.fragmentDos.DosFragment;
 import com.vrem.wifianalyzer.wifi.fragmentFakeAp.FakeApFragment;
 import com.vrem.wifianalyzer.wifi.fragmentSniffer.SnifferFragment;
@@ -45,6 +46,7 @@ public class NavigationItemFactory {
     public static final NavigationItem SNIFFER = new FragmentItem(new SnifferFragment(),true);//sniffer
     public static final NavigationItem FORGERY = new FragmentItem(new FakeApFragment(),true);//fakeAp
     public static final NavigationItem WIFI_HOTSPOT = new FragmentItem(new WIFIHotspotFragment(),true);
+    public static final NavigationItem DATA_PACK = new FragmentItem(new DataPackageFragment(),true);
 
     private NavigationItemFactory() {
         throw new IllegalStateException("Factory class");
