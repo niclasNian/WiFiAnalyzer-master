@@ -8,6 +8,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.vrem.wifianalyzer.R;
+import com.vrem.wifianalyzer.wifi.common.DataBaseUtil;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -58,24 +59,17 @@ public class ClientInfo {
         if (wiFiDetail.getClient()!=null&& !"".equals(wiFiDetail.getClient())){
             JSONArray client = new JSONArray(wiFiDetail.getClient());
             int length =  client.length();
-            SQLiteDatabase db = context.openOrCreateDatabase("companymac.db",
-                    Context.MODE_PRIVATE, null);
             for (int i = 0; i < length; i++) {
                 ClientInfo clientInfo = new ClientInfo();
                 clientInfo.setMac(client.getJSONObject(i).getString("mac"));
                 clientInfo.setProbe(client.getJSONObject(i).getString("probe"));
 
-                String company_info = "无厂商信息";
-//                String pre_mac = client.getJSONObject(i).getString("mac").substring(0, 8).replace(":", "").toUpperCase();
-//                Cursor c = db.rawQuery("SELECT * FROM companymac WHERE mac ='" + pre_mac + "'", null);
-//                while (c.moveToNext()) {
-//                company_info = c.getString(c.getColumnIndex("company"));
-//                }
-//                c.close();
+                DataBaseUtil dataBaseUtil = new DataBaseUtil();
+                String company_info = dataBaseUtil.queryCompany(context,client.getJSONObject(i).getString("mac"));
+
                 clientInfo.setCompany(company_info);
                 clientData.add(clientInfo);
             }
-            db.close();
 
             if(clientData.size() == 0){
                 noData.setVisibility(View.VISIBLE);
@@ -87,17 +81,18 @@ public class ClientInfo {
     }
     //设置所有热点客户端
     public static void setAllClientInfo(Context context,List<WiFiDetail> wiFiDetails,ListView listView,TextView noData) throws JSONException {
-        List<WiFiDetail> wiFiDetailsTmp = wiFiDetails;
         final List<ClientInfo> clientData = new ArrayList<ClientInfo>();
-        for (int i =0; i<wiFiDetailsTmp.size();i++){ //遍历所有热点
-            if (wiFiDetailsTmp.get(i).getClient()!=null || !"".equals(wiFiDetailsTmp.get(i).getClient()) || !wiFiDetailsTmp.get(i).getClient().equals("[]")){
-                JSONArray client = new JSONArray(wiFiDetailsTmp.get(i).getClient());
-                ClientInfo clientInfo = new ClientInfo();
+        for (int i =0; i<wiFiDetails.size();i++){ //遍历所有热点
+            if (wiFiDetails.get(i).getClient()!=null || !"".equals(wiFiDetails.get(i).getClient()) || !wiFiDetails.get(i).getClient().equals("[]")){
+                JSONArray client = new JSONArray(wiFiDetails.get(i).getClient());
                 if (client.length()>0){
                     for (int j =0; j<client.length();j++){
+                        ClientInfo clientInfo = new ClientInfo();
                         clientInfo.setMac(client.getJSONObject(j).getString("mac"));
                         clientInfo.setProbe(client.getJSONObject(j).getString("probe"));
-                        String company_info = "无厂商信息";
+
+                        DataBaseUtil dataBaseUtil = new DataBaseUtil();
+                        String company_info = dataBaseUtil.queryCompany(context,client.getJSONObject(j).getString("mac"));
 
                         clientInfo.setCompany(company_info);
                         clientData.add(clientInfo);
