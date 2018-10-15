@@ -22,7 +22,7 @@
             android:textSize="8dp"
             android:text="连接"
             android:layout_marginRight="20dp"
-            android:visibility="visible"
+            android:visibility="invisible"
             android:layout_alignParentRight="true"/>
     </RelativeLayout>
 
