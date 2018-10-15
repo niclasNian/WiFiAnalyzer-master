@@ -96,7 +96,7 @@
                 android:value="com.vrem.wifianalyzer.MainActivity"/>
         </activity>
         <activity
-            android:name=".WifiInfoActivity"
+            android:name=".ClientInfoActivity"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait">
         </activity>
